@@ -9,8 +9,7 @@ public class CharacterSelecterScreen : Screen
     public override void SetActionToCancelButton()
     {
         CancelButton.AddListener(() => _menuScreen.TurnOn());
-        Saver<SavableSelectedCharacter> saver = new Saver<SavableSelectedCharacter>();
-        saver.Save(new SavableSelectedCharacter(""));
+        Saver<SavableSelectedCharacter>.Save(new SavableSelectedCharacter(""));
         _continieGameButton.gameObject.SetActive(false);
     }
 }

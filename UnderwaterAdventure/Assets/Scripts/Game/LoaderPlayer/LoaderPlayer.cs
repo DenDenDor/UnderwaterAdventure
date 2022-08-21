@@ -8,8 +8,7 @@ public class LoaderPlayer : MonoBehaviour
    private Player _currentPlayer;
    private void Start() 
    {
-    Loader<SavableSelectedCharacter> loader = new Loader<SavableSelectedCharacter>();
-     string nameOfPlayer = loader.Load(new SavableSelectedCharacter()).NameOfSelectedCharacter;
+     string nameOfPlayer = Loader<SavableSelectedCharacter>.Load(new SavableSelectedCharacter()).NameOfSelectedCharacter;//loader.Load(new SavableSelectedCharacter()).NameOfSelectedCharacter;
      _currentPlayer =CreatePlayer(_players.Find(e=> e.PlayerInformation.Name == nameOfPlayer));
    }
    private Player CreatePlayer(Player player)

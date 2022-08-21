@@ -1,10 +1,27 @@
+using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEngine;
+using System;
+using System.Text;
 
 public class Saver<T> where T : ISavable 
 {
-   public void Save(T data)
+   private static string _dataPath = "DataPath";
+
+   public static void Save(T data)
    {
-        File.WriteAllText($"{Application.streamingAssetsPath}/{data}.json", JsonUtility.ToJson(data));
+        string dataPath = GetterFilePath.GetFilePath(_dataPath, $"{data}");
+        string jsonData = JsonUtility.ToJson(data, true);
+        byte[] byteData = Encoding.ASCII.GetBytes(jsonData);
+        if (!Directory.Exists(Path.GetDirectoryName(dataPath)))
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(dataPath));
+        }
+       File.WriteAllBytes(dataPath, byteData);
+     /* using (FileStream stream = new FileStream($"{Application.persistentDataPath}/{_dataPath}/{data}.md",FileMode.Open) )
+      {
+         BinaryFormatter formatter = new BinaryFormatter();
+         formatter.Serialize(stream,data);
+      }*/
    }
 }

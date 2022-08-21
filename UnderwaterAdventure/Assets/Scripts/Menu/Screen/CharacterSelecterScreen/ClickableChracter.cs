@@ -16,8 +16,7 @@ public class ClickableChracter : MonoBehaviour, IPointerClickHandler
     }
     private void OnClick()
     {
-        Saver<SavableSelectedCharacter> saver = new Saver<SavableSelectedCharacter>();
-        saver.Save(new SavableSelectedCharacter(_player.PlayerInformation.Name));
+        Saver<SavableSelectedCharacter>.Save(new SavableSelectedCharacter(_player.PlayerInformation.Name));
         _loaderScene.OpenGame();
     }
 }
