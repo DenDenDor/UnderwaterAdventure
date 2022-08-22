@@ -10,7 +10,7 @@ public class MenuScreen : Screen
     }
     public override void SetActionToCancelButton()
     {
-        CancelButton.AddListener(() =>
+        CancelButton.ChangeEvent(() =>
         {
              Debug.Log("CLOSE THE APP!");
              Application.Quit();

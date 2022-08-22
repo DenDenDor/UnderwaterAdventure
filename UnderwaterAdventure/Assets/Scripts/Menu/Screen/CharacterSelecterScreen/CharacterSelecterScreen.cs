@@ -8,7 +8,7 @@ public class CharacterSelecterScreen : Screen
     [SerializeField] private ContinieGameButton _continieGameButton;
     public override void SetActionToCancelButton()
     {
-        CancelButton.AddListener(() => _menuScreen.TurnOn());
+        CancelButton.ChangeEvent(() => _menuScreen.TurnOn());
         Saver<SavableSelectedCharacter>.Save(new SavableSelectedCharacter(""));
         _continieGameButton.gameObject.SetActive(false);
     }

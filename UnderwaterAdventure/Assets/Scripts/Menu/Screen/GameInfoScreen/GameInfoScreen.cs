@@ -7,6 +7,6 @@ public class GameInfoScreen : Screen
     [SerializeField] private MenuScreen _menuScreen;
     public override void SetActionToCancelButton()
     {
-        CancelButton.AddListener(() => _menuScreen.TurnOn());
+        CancelButton.ChangeEvent(() => _menuScreen.TurnOn());
     }
 }

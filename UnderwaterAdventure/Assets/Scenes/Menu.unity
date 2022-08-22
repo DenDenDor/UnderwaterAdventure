@@ -616,7 +616,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0427\u0422\u041E  - \u0422\u041E"
+  m_Text: "\u0417\u0412\u0423\u041A\u0418"
 --- !u!222 &313099968
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -635,6 +635,7 @@ GameObject:
   m_Component:
   - component: {fileID: 349670222}
   - component: {fileID: 349670223}
+  - component: {fileID: 349670224}
   m_Layer: 5
   m_Name: Toggle (1)
   m_TagString: Untagged
@@ -711,6 +712,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &349670224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349670221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfeb12635354bb44b8e0c2c1e845a90d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _toggle: {fileID: 349670223}
 --- !u!1 &406837091
 GameObject:
   m_ObjectHideFlags: 0
@@ -1168,8 +1182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41b62ef5ec5410c4b88ef93b15ae3286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _test: {fileID: 11400000, guid: 121e33205be8e8449be363820db2ff1a, type: 2}
-  _text: {fileID: 155273750}
   _loaderScene: {fileID: 1499892181}
 --- !u!1 &681723197
 GameObject:
@@ -1407,6 +1419,9 @@ MonoBehaviour:
   _cancelButton: {fileID: 1650086254}
   _canvasGroup: {fileID: 874016339}
   _menuScreen: {fileID: 1146308435}
+  _togglesOfSettings:
+  - {fileID: 1492600701}
+  - {fileID: 349670224}
 --- !u!225 &874016339
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2030,6 +2045,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1492600699}
   - component: {fileID: 1492600700}
+  - component: {fileID: 1492600701}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -2106,6 +2122,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1492600701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492600698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c7ed68687fc7144280d3f52ec42ee6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _toggle: {fileID: 1492600700}
 --- !u!1 &1499892180
 GameObject:
   m_ObjectHideFlags: 0
@@ -2359,7 +2388,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0427\u0422\u041E  - \u0422\u041E"
+  m_Text: "\u041C\u0423\u0417\u042B\u041A\u0410"
 --- !u!222 &1575197534
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2419,7 +2448,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46446db6a731f264aab1293c9420cbef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _button: {fileID: 1650086255}
 --- !u!114 &1650086255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2427,7 +2455,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650086252}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -2483,7 +2511,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650086252}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 

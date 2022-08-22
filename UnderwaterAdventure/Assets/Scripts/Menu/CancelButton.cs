@@ -6,10 +6,15 @@ using UnityEngine.Events;
 public class CancelButton : MonoBehaviour
 {
     
-    [SerializeField] private Button _button;
-    public void AddListener(UnityAction action)
+    public event UnityAction OnClickCancelButton;
+    public void ChangeEvent(UnityAction action)
     {
-        _button.onClick.RemoveAllListeners();
-        _button.onClick.AddListener(action);
+        OnClickCancelButton = action;
+    }
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            OnClickCancelButton?.Invoke();
+        }
     }
 }

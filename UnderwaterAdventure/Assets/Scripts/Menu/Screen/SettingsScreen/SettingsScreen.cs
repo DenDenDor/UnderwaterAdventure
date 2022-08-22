@@ -5,9 +5,15 @@ using UnityEngine;
 public class SettingsScreen : Screen
 {
     [SerializeField] private MenuScreen _menuScreen;
+    [SerializeField] private  List<ToggleOfSettings> _togglesOfSettings;
+    private void Awake() 
+    {
+        _togglesOfSettings.ForEach(e=>e.TryLoad());
+    } 
     public override void SetActionToCancelButton()
     {
-        CancelButton.AddListener(() => _menuScreen.TurnOn());
+        _togglesOfSettings.ForEach(e=>e.Save());
+        CancelButton.ChangeEvent(() => _menuScreen.TurnOn());
     }
 
 }
