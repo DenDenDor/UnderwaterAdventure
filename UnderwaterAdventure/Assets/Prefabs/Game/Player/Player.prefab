@@ -97,3 +97,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerInformation:
     _name: Bob
+    _color: {r: 1, g: 0, b: 0.1133728, a: 1}
+    _spriteRenderer: {fileID: 7966138243907264586}

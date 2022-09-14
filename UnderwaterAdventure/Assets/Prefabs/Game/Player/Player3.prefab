@@ -97,3 +97,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerInformation:
     _name: Michel
+    _color: {r: 0, g: 0.054534435, b: 1, a: 1}
+    _spriteRenderer: {fileID: 8899231026149587307}

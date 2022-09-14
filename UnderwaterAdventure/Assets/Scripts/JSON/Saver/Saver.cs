@@ -6,6 +6,7 @@ using System.Text;
 
 public class Saver<T> where T : ISavable 
 {
+
    private static string _dataPath = "DataPath";
 
    public static void Save(T data)
@@ -18,10 +19,5 @@ public class Saver<T> where T : ISavable
             Directory.CreateDirectory(Path.GetDirectoryName(dataPath));
         }
        File.WriteAllBytes(dataPath, byteData);
-     /* using (FileStream stream = new FileStream($"{Application.persistentDataPath}/{_dataPath}/{data}.md",FileMode.Open) )
-      {
-         BinaryFormatter formatter = new BinaryFormatter();
-         formatter.Serialize(stream,data);
-      }*/
    }
 }

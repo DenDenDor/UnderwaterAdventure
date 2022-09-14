@@ -463,6 +463,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209223930}
   m_CullTransparentMesh: 1
+--- !u!114 &260823694 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6232235185340790952, guid: 762519f89372fbc4f980f2f60dd7a7aa, type: 3}
+  m_PrefabInstance: {fileID: 767779048}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e51179d24388cd8418d106f970f29c6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &276064526
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,6 +735,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfeb12635354bb44b8e0c2c1e845a90d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _menuSettings: {fileID: 11400000, guid: 4e06638c279e98543a783e92582b5e9a, type: 2}
+  _startMenuSettings: {fileID: 0}
   _toggle: {fileID: 349670223}
 --- !u!1 &406837091
 GameObject:
@@ -779,7 +792,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cancelButton: {fileID: 1650086254}
   _canvasGroup: {fileID: 406837094}
+  _text: {fileID: 1755725336}
+  _clickableChracters:
+  - {fileID: 2030574092}
+  - {fileID: 260823694}
+  - {fileID: 1746235117}
   _menuScreen: {fileID: 1146308435}
+  _countForClicks: 2
   _continieGameButton: {fileID: 664008374}
 --- !u!225 &406837094
 CanvasGroup:
@@ -1353,6 +1372,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3213002683895022988, guid: 601fe681ea7e9f241bf6c82fb31778e4, type: 3}
     - target: {fileID: 6232235185340790952, guid: 762519f89372fbc4f980f2f60dd7a7aa, type: 3}
+      propertyPath: _description
+      value: "\u0417\u0415\u041B\u0415\u041D\u042B\u0419"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232235185340790952, guid: 762519f89372fbc4f980f2f60dd7a7aa, type: 3}
       propertyPath: _nameOfCharacter
       value: Alex
       objectReference: {fileID: 0}
@@ -1691,6 +1714,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8899231026149587306, guid: 98add0d95335f654c89fa36bdabbc50b, type: 3}
     - target: {fileID: 6232235185340790952, guid: 762519f89372fbc4f980f2f60dd7a7aa, type: 3}
+      propertyPath: _description
+      value: "\u0421\u0418\u041D\u0418\u0419"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232235185340790952, guid: 762519f89372fbc4f980f2f60dd7a7aa, type: 3}
       propertyPath: _nameOfCharacter
       value: Michel
       objectReference: {fileID: 0}
@@ -1959,6 +1986,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1248548413}
   m_CullTransparentMesh: 1
+--- !u!1 &1282795799
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1282795801}
+  - component: {fileID: 1282795800}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1282795800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282795799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39da5f3cb8c63584c8417c25d1fda642, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuSettingsData: {fileID: 11400000, guid: 4e06638c279e98543a783e92582b5e9a, type: 2}
+--- !u!4 &1282795801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282795799}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 684.0833, y: 1134.9912, z: -39.99423}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1393462637
 GameObject:
   m_ObjectHideFlags: 0
@@ -2134,6 +2205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c7ed68687fc7144280d3f52ec42ee6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _menuSettings: {fileID: 11400000, guid: 4e06638c279e98543a783e92582b5e9a, type: 2}
+  _startMenuSettings: {fileID: 0}
   _toggle: {fileID: 1492600700}
 --- !u!1 &1499892180
 GameObject:
@@ -2607,6 +2680,17 @@ MonoBehaviour:
   _cancelButton: {fileID: 1650086254}
   _canvasGroup: {fileID: 1726651480}
   _menuScreen: {fileID: 1146308435}
+--- !u!114 &1746235117 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6232235185340790952, guid: 762519f89372fbc4f980f2f60dd7a7aa, type: 3}
+  m_PrefabInstance: {fileID: 1096812002}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e51179d24388cd8418d106f970f29c6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1755725334
 GameObject:
   m_ObjectHideFlags: 0
@@ -3051,6 +3135,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010505199}
   m_CullTransparentMesh: 1
+--- !u!114 &2030574092 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6232235185340790952, guid: 762519f89372fbc4f980f2f60dd7a7aa, type: 3}
+  m_PrefabInstance: {fileID: 3795376640298092262}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e51179d24388cd8418d106f970f29c6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2051033368
 GameObject:
   m_ObjectHideFlags: 0
@@ -3316,6 +3411,10 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 7966138243907264587, guid: 71cf9a0084934544393eea53d17e63e9, type: 3}
+    - target: {fileID: 6232235185340790952, guid: 762519f89372fbc4f980f2f60dd7a7aa, type: 3}
+      propertyPath: _description
+      value: "\u041A\u0420\u0410\u0421\u041D\u042B\u0419"
+      objectReference: {fileID: 0}
     - target: {fileID: 6232235185340790952, guid: 762519f89372fbc4f980f2f60dd7a7aa, type: 3}
       propertyPath: _nameOfCharacter
       value: Bob

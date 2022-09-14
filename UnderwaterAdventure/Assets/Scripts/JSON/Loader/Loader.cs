@@ -6,6 +6,7 @@ using System.Text;
 
 public class Loader<T> where T : ISavable 
 {
+    
     private static string _dataPath = "DataPath";
     public static T Load(T file)
     {

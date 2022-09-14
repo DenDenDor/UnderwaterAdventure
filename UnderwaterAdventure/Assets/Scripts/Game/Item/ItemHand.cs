@@ -11,15 +11,24 @@ public class ItemHand : MonoBehaviour
    private void Start() 
    {
     _slotCollector.OnChoose += Appear;
-    _slotCollector.OnCancelSlot += Disappear;
    }
-   private void Disappear()
+   public void SetSlots()
+   {
+      _slotCollector.Slots.ForEach(e=>e.TryPuttingItem());
+       _slotCollector.RemoveItem();
+       Disappear();
+
+   }
+   public void Disappear()
    {
      ChangeState(false,null);
    }
    private void Appear()
    {
-    ChangeState(true,_slotCollector.CurrentSlot.ReturnItemSprite());
+      if(_slotCollector.CurrentSlot.Item.Sprite != null)
+      {
+       ChangeState(true,_slotCollector.CurrentSlot.ReturnItemSprite());
+      }
    }
    private void ChangeState(bool canMove,Sprite sprite)
    {

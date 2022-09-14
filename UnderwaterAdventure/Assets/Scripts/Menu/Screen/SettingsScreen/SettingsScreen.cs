@@ -12,8 +12,12 @@ public class SettingsScreen : Screen
     } 
     public override void SetActionToCancelButton()
     {
-        _togglesOfSettings.ForEach(e=>e.Save());
-        CancelButton.ChangeEvent(() => _menuScreen.TurnOn());
+        Debug.Log("SAVE");
+        CancelButton.ChangeEvent(() =>
+        {
+            _togglesOfSettings.ForEach(e=>e.Save());
+             _menuScreen.TurnOn();
+         });
     }
 
 }

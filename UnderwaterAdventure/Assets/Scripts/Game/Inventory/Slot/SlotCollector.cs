@@ -2,48 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 public class SlotCollector : MonoBehaviour
 {
     [SerializeField] private SlotCreator _slotCreator;
+    [SerializeField] private SlotMouseButtonHandler _slotMouseButtonHandler;
     private List<Slot> _slots = new List<Slot>();
     private Slot _currentSlot;
     public Slot CurrentSlot { get => _currentSlot; private set => _currentSlot = value; }
+    public List<Slot> Slots { get => _slots; private set => _slots = value; }
+    public SlotCreator SlotCreator { get => _slotCreator; private set => _slotCreator = value; }
+
     public event Action<(Slot firstSlot, Slot secondSlot)> OnRefresh;
     public event Action OnChoose;
-    public event Action OnCancelSlot;
     private void Awake()
     {
-        _slotCreator.OnCreate+=GetAllSlots; 
-        OnCancelSlot += RemoveItem;
+        SlotCreator.OnCreate+=GetAllSlots; 
+        _slotMouseButtonHandler.OnGetRightMouseButtonDown += RemoveItem;
     }
-    private void RemoveItem() => CurrentSlot = null;
-    private void Update() 
-    {
-      if (Input.GetMouseButtonDown(1))
-      {
-          OnCancelSlot?.Invoke();
-      }  
-    }
+    public void RemoveItem() => CurrentSlot = null;
     private void GetAllSlots(List<Slot> slots)
     {
-         _slots = slots;
-         _slots.ForEach(e=>e.OnClick += ChooseSlot);
+         Slots = slots;
+         Slots.ForEach(e=>e.OnClick += ChooseSlot);
     }
+    
     private void ChooseSlot(Slot slot)
     {
         if (_currentSlot != null && slot.Item.Name != _currentSlot.Item.Name)
         {
+            Debug.Log("ERROR TO CHOOSE");
             OnRefresh?.Invoke((_currentSlot,slot));
-            OnCancelSlot?.Invoke();
+            RemoveItem();
             return;
         }
+        Debug.Log("OKEY TO CHOOSE");
         _currentSlot = slot;
         OnChoose?.Invoke();
     }
     private void OnDisable() 
     {
-        _slots.ForEach(e=>e.OnClick -= ChooseSlot);
-        _slotCreator.OnCreate-= GetAllSlots; 
-        OnCancelSlot -= RemoveItem;
+        Slots.ForEach(e=>e.OnClick -= ChooseSlot);
+        SlotCreator.OnCreate-= GetAllSlots; 
+        _slotMouseButtonHandler.OnGetRightMouseButtonDown -= RemoveItem;
     }
+    
 }

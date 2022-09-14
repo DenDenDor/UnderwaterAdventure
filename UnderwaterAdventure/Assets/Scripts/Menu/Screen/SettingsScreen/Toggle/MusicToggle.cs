@@ -11,7 +11,7 @@ public class MusicToggle : ToggleOfSettings
     }
     public override void TryLoad()
     {
-        SavableMusicSettings savableMusicSettings = Loader<SavableMusicSettings>.Load(new SavableMusicSettings());
-        ChangeStateOfToggle(savableMusicSettings,savableMusicSettings.IsMusicTurnOn);
+       SavableMusicSettings savableMusicSettings = Loader<SavableMusicSettings>.Load(new SavableMusicSettings());
+       ChangeStateOfToggle(savableMusicSettings,savableMusicSettings.IsMusicTurnOn);
     }
 }
