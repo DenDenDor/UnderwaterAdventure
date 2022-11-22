@@ -9,12 +9,11 @@ public class RefresherSlot : MonoBehaviour
     {
       _slotCollector.OnRefresh +=  Refresh;
     }
-    private void Refresh((Slot firstSlot, Slot secondSlot) coupleOfSlots)
+    public void Refresh((Slot firstSlot, Slot secondSlot) coupleOfSlots)
     {
-       Slot additionalSlot = coupleOfSlots.firstSlot;
-       Vector2 position = additionalSlot.transform.position;
-       coupleOfSlots.firstSlot.Replace(coupleOfSlots.secondSlot.transform.position);
-       coupleOfSlots.secondSlot.Replace(position);
+       Item additonalItem = coupleOfSlots.firstSlot.Item;
+       coupleOfSlots.firstSlot.AddItem(coupleOfSlots.secondSlot.Item);
+       coupleOfSlots.secondSlot.AddItem(additonalItem);
     }
     private void OnDisable() 
     {

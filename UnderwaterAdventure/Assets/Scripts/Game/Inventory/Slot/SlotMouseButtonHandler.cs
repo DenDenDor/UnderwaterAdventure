@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class SlotMouseButtonHandler : MonoBehaviour
 {
-    public event Action OnGetLeftMouseButtonUp;
-    public event Action OnGetLeftMouseButtonDown;
+    public event Action OnActionBeforeRefreshingSlots;
+    public Action OnGetLeftMouseButtonUp;
     public event Action OnGetRightMouseButtonDown;
     private void Update() 
     {
@@ -16,7 +16,7 @@ public class SlotMouseButtonHandler : MonoBehaviour
       }  
       if (Input.GetMouseButtonUp(0))
       {
-        Debug.Log("COOl =");
+        OnActionBeforeRefreshingSlots?.Invoke();
         OnGetLeftMouseButtonUp?.Invoke();
       }
     }

@@ -24,25 +24,23 @@ public class SlotCollector : MonoBehaviour
     private void GetAllSlots(List<Slot> slots)
     {
          Slots = slots;
-         Slots.ForEach(e=>e.OnClick += ChooseSlot);
+         Slots.ForEach(e=>e.OnDragItem += ChooseSlot);
     }
     
     private void ChooseSlot(Slot slot)
     {
         if (_currentSlot != null && slot.Item.Name != _currentSlot.Item.Name)
         {
-            Debug.Log("ERROR TO CHOOSE");
             OnRefresh?.Invoke((_currentSlot,slot));
             RemoveItem();
             return;
         }
-        Debug.Log("OKEY TO CHOOSE");
         _currentSlot = slot;
         OnChoose?.Invoke();
     }
     private void OnDisable() 
     {
-        Slots.ForEach(e=>e.OnClick -= ChooseSlot);
+        Slots.ForEach(e=>e.OnDragItem -= ChooseSlot);
         SlotCreator.OnCreate-= GetAllSlots; 
         _slotMouseButtonHandler.OnGetRightMouseButtonDown -= RemoveItem;
     }

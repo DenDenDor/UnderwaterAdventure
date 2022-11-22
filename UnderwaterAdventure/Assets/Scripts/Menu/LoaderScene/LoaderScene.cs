@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class LoaderScene : MonoBehaviour
 {
+   public void OpenURL(string url) => Application.OpenURL(url);
    public void OpenGame() => StartCoroutine(LoadScene("Game"));
    public void OpenMenu() => StartCoroutine(LoadScene("Menu"));
    private IEnumerator LoadScene(string nameOfScene)

@@ -1,23 +1,39 @@
+using System.Linq;
 using System.Collections;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Threading;
-using System.Threading.Tasks;
 using UnityEngine.EventSystems;
-public class Slot : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
+public class Slot : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField] private Sprite _questionSprite;
     [SerializeField] private Image _icon;
+    [SerializeField] private Image _panel;
     private Item _item;
-    private CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
     private bool _isItemTaken;
     private bool _isCursorOnSlot;
+    public bool CanDrag { get; set; } = true;
     public Item Item { get => _item; set => _item = value; }
-    public event Action<Slot> OnClick; 
+    public event Action<Slot> OnDragItem; 
+    public event Action<Slot> OnClick;
+    private void Start()
+    {
+      if (Item.Name != "")
+      {
+        _item.ItemAbilities.ToList().ForEach(e=>e.SetStartCountForReloading());
+      }   
+    }
+    public void TurnOnLight()
+    {
+        _panel.gameObject.SetActive(true);
+    }
+    public void TurnOffLight()
+    {
+        _panel.gameObject.SetActive(false);
+    }
     public void AddItem(Item item)
     {
-        SetCurrentItem(item,item.Sprite);
+        SetCurrentItem(item);
     }
 
     public Sprite ReturnItemSprite()
@@ -26,12 +42,34 @@ public class Slot : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUp
     }
     public void RemoveItem()
     {
-        SetCurrentItem(null,null);
+        SetCurrentItem(null);
     }
-    private void SetCurrentItem(Item item, Sprite sprite)
+    private void SetCurrentItem(Item item)
     {
         Item = item;
-        _icon.sprite = sprite;
+        Action OnHasItem = _item != null ?  (Action)CheckSprite :  (Action)TurnOffSprite;
+        OnHasItem.Invoke();
+        void CheckSprite()
+        {
+        Action OnSetSpite = Item.Sprite != null ? (Action) SetSprite : (Action) TurnOffSprite;
+        OnSetSpite.Invoke();
+        }
+    }
+    private void SetSprite()
+    {
+         TurnOnSprite();
+        _icon.sprite = Item.Sprite;
+    }
+    private void TurnOnSprite()
+    {
+         if (_icon.isActiveAndEnabled == false)
+        {
+        _icon.gameObject.SetActive(true);
+        }
+    }
+    private void TurnOffSprite()
+    {
+        _icon.gameObject.SetActive(false);
     }
     public void Replace(Vector3 position)
     {
@@ -42,9 +80,13 @@ public class Slot : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUp
         _icon.enabled = true;
         if (_isCursorOnSlot)
         {
-            Debug.Log("PUT ITEM!");
-             OnClick?.Invoke(this);
+             OnDragItem?.Invoke(this);
         }
+    }
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("CLikc ==!");
+        OnClick?.Invoke(this);
     }
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -53,10 +95,10 @@ public class Slot : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUp
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (_isItemTaken == false && _item.Sprite != null)
+        if (_isItemTaken == false && _item.Sprite != null && CanDrag)
         {
             _isItemTaken = true;
-            OnClick?.Invoke(this);
+            OnDragItem?.Invoke(this);
             _icon.enabled = false;
         }
     }
@@ -66,7 +108,7 @@ public class Slot : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUp
         _isItemTaken = false;
         if (_isCursorOnSlot)
         {
-            OnClick?.Invoke(this);
+            OnDragItem?.Invoke(this);
         }
     }
 

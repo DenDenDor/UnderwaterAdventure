@@ -11,8 +11,8 @@ public class WindowCreator : MonoBehaviour
     private Dictionary<(float,float), GameWindow> _dictionary = new Dictionary<(float, float), GameWindow>();
    private void Awake() 
    {
-    _dictionary.Add((0,8), _gameWindows.Find(e=>e is TreasureWindow));
-    _dictionary.Add((8,10),_gameWindows.Find(e=>e is BattleWindow));
+    _dictionary.Add((0,2), _gameWindows.Find(e=>e is TreasureWindow));
+    _dictionary.Add((2,10),_gameWindows.Find(e=>e is BattleWindow));
     _doorCreator.OnRemoveDoor += CreateWindow;
    }
    private void CreateWindow()
